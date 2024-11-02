@@ -58,7 +58,8 @@ def mave():
         if random.randint(1,2) == 1:
             eepo()
         else:
-            eep()
+            pass
+            #eep()
 
 Thread(target=mave).start()
 
@@ -70,9 +71,6 @@ while 1:
         mm()
     elif i == 2:
         ok()
-    elif i == 3:
+
+    if random.randint(1,10) == 1:
         eepoo()
-
-
-    #aah()
-
