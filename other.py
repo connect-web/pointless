@@ -41,9 +41,9 @@ def eep():
     keyboard.release('d')  # Release spacebar
 
 def eepoo():
-    keyboard.press('e')  # Press spacebar
+    keyboard.press('i')  # Press spacebar
     sleep(random.randint(4500,4800)/1000)
-    keyboard.release('e')  # Release spacebar
+    keyboard.release('i')  # Release spacebar
 
 
 
@@ -64,12 +64,6 @@ Thread(target=mave).start()
 
 while 1:
     sleep(random.randint(100,2000)/1000)
-    i = random.randint(1,3)
+    
+    eepoo()
 
-    if random.randint(1,2) == 1:
-        eepoo()
-
-    if i == 1:
-        mm()
-    elif i == 2:
-        ok()
