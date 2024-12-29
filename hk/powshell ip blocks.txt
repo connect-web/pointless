@@ -1,0 +1,17 @@
+    $blockedIPs = @(
+        "34.162.150.113", "35.209.231.126", "35.211.188.206", "173.199.65.85",
+        "35.212.7.127", "45.76.230.47", "64.176.214.140", "67.212.239.135",
+        "35.216.117.147", "66.42.47.190", "34.176.254.147", "209.250.228.164",
+        "35.213.127.207", "158.247.209.212", "91.109.240.108", "45.32.147.239",
+        "78.138.107.89", "188.42.41.242", "216.238.116.53", "35.217.3.213",
+        "104.207.131.161", "207.148.117.52", "139.180.164.163", "35.216.222.197",
+        "34.95.192.78", "64.176.15.93", "109.200.199.132", "35.215.186.89",
+        "35.240.185.217", "143.244.57.168", "78.141.217.111"
+    )
+     
+    foreach ($ip in $blockedIPs) {
+        New-NetFirewallRule -DisplayName "Block Inbound $ip" -Direction Inbound -RemoteAddress $ip -Action Block -Profile Any -Enabled True
+        New-NetFirewallRule -DisplayName "Block Outbound $ip" -Direction Outbound -RemoteAddress $ip -Action Block -Profile Any -Enabled True
+    }
+     
+    Write-Output "Firewall rules to block specified IPs have been created."
