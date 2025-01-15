@@ -3,7 +3,7 @@ from pynput.mouse import Button, Controller as Mouse
 from time import sleep
 import threading
 import random
-from controls import greenade_fast, acceptMenu,eepo, eep, keyboard as keyController
+from controls import greenade_fast, eep,eepo, left, right, acceptMenu
 # Initialize mouse controller
 mouse = Mouse()
 toggle_active = False  # Global variable to track the toggle state
@@ -32,27 +32,38 @@ def look_down():
 def toggle_action():
     global toggle_active
     while True:
+
         if toggle_active:
-
-            acceptMenu()
-
+            for x in range(3):
+                acceptMenu()
             #move_mouse_down()
-            pydirectinput.moveRel(0, 250)
+            pydirectinput.moveRel(0, random.randint(250,350))
             sleep(0.1)
+            pydirectinput.moveRel(0, random.randint(250,350))
+            sleep(0.25)
             greenade_fast()
             #sleep(5)
-
         sleep(0.2)
 
 def move():
-    global toggle_active
     while True:
         if toggle_active:
             if random.randint(1,2) == 1:
                 eepo()
             else:
                 eep()
-        sleep(5)
+        sleep(0.1)
+def shooty():
+    global toggle_active
+    while True:
+        if toggle_active:
+            sleep(random.randint(100, 2500) / 1000)
+            threading.Thread(target=left, daemon=True).start()
+            threading.Thread(target=right, daemon=True).start()
+
+
+        sleep(0.5)
+
 
 # Start the loop in a separate thread
 threading.Thread(target=toggle_action, daemon=True).start()

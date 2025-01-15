@@ -9,21 +9,31 @@ from pynput.mouse import Button
 from pynput.mouse import Controller as Mouse
 
 import pydirectinput
+
+toggle_active = False
 import time
 mouse = Mouse()
 keyboard = Controller()
 
-
-
-
-def click_left():
+def mm():
 
     mouse.press(Button.left)
     # Hold the mouse button for 5 seconds
-    sleep(random.randint(100,200)/1000)
+    sleep(random.randint(200,500)/1000)
 
     # Release the left mouse button
     mouse.release(Button.left)
+
+def acceptMenu():
+
+    keyboard.press('.')
+    # Hold the mouse button for 5 seconds
+    sleep(random.randint(80,120)/1000)
+
+    # Release the left mouse button
+    keyboard.release('.')
+
+
 
 def move_mouse_down(distance=300, duration=0.5):
     steps = random.randint(2,4)  # Number of steps to make the movement smoother
@@ -52,7 +62,7 @@ def aah():
 
 def eep():
     keyboard.press('d')  # Press spacebar
-    sleep(random.randint(1500,5800)/1000)
+    sleep(random.randint(1400,2800)/1000)
     keyboard.release('d')  # Release spacebar
 
 def greenade_hold():
@@ -67,17 +77,29 @@ def greenade_fast():
     sleep(random.randint(25,55)/1000)
     keyboard.release('e')  # Release spacebar
 
+def left():
+    for x in range(random.randint(1,5)):
+        mouse.press(Button.left)
+        # Hold the mouse button for 5 seconds
+        sleep(random.randint(20, 45) / 1000)
+        # Release the left mouse button
+        mouse.release(Button.left)
 
+def right():
+    for x in range(random.randint(1, 5)):
+        mouse.press(Button.right)
+        # Hold the mouse button for 5 seconds
+        sleep(random.randint(20, 45) / 1000)
+        # Release the left mouse button
+        mouse.release(Button.right)
+
+def shoot_both():
+    Thread(target=left).start()
+    Thread(target=right()).start()
+    sleep(45*5)
 
 def eepo():
     keyboard.press('a')  # Press spacebar
-    sleep(random.randint(4500,7800)/1000)
+    sleep(random.randint(1400,2800)/1000)
     keyboard.release('a')  # Release spacebar
 
-
-def mave():
-    while 1:
-        if random.randint(1,2) == 1:
-            eepo()
-        else:
-            eep()
